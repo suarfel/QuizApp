@@ -13,4 +13,4 @@ Installation
 To run QuizApp locally on your machine, follow these steps:
 
 ## Clone the repository:
-git clone <repository-url>
+git clone https://github.com/suarfel/QuizApp.git
