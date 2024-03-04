@@ -1,0 +1,28 @@
+@model QuizApp.Models.ViewModels.ChoiceViewModel
+@{
+    ViewBag.Title = "AddAnswer";
+}
+
+
+<div class="card" style="width: 35rem">
+    <form asp-action="AddAnswer" method="post">
+        <div class="card-body d-flex  flex-column ">
+            <h5 class="card-title">@Html.DisplayFor(model => model.Question.Text)</h5>
+            <p class="card-text"> @Html.DisplayFor(model => model.Question.Text)</p>
+            @foreach (var m in Model.Question.Choices)
+            {
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" asp-for="AnswerId" id="@m.Id" value="@m.Id">
+                    <label class="form-check-label" for="@m.Id">
+                        @Html.DisplayFor(modelItem => m.Text)
+                    </label>
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="QuestionId" value="@Model.Question.Id" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

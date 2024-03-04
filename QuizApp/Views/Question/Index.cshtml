@@ -1,0 +1,58 @@
+@model IEnumerable<QuizApp.Models.Domain.Question>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>Questions</h1>
+@* <button class="btn btn-link" asp-action="Create">Button Link</button> *@
+<a asp-action="Create" class="btn btn-primary">Create Quiz</a>
+
+@* <thead>
+<tr>
+<th>
+@Html.DisplayNameFor(model => model.Title)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Description)
+</th>
+<th></th>
+</tr>
+</thead> *@
+<div class=" d-flex flex-row mt-5 gap-5 flex-wrap">
+    @foreach (var item in Model)
+    {
+
+        <div class="card" style="width: 25rem;height: 10rem">
+
+            <div class="card-body d-flex  flex-column ">
+                @* <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                <p class="card-text"> @Html.DisplayFor(modelItem => item.Description)</p> *@
+                @* <a href="#" class="btn btn-primary">Go somewhere</a> *@
+                <div>
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+        @* <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+    </tr> *@
+
+    }
+</div>
+</tbody>
+</table>

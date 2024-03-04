@@ -1,0 +1,30 @@
+@model QuizApp.Models.Domain.Quiz
+
+@{
+    ViewBag.Title = "Create";
+}
+<h4 class="" style="margin-left: 8rem;">Create Quiz</h4>
+<div class="  py-4" style="margin-left: 8rem;">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary mt-3 btn-sm" />
+                </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary btn-sm mt-3" asp-area="" asp-controller="Quiz" asp-action="Index">
+        Back To Quizes</a>
+</div>

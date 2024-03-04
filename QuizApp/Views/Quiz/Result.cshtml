@@ -1,0 +1,30 @@
+@model IEnumerable<QuizApp.Models.Domain.AnswerModel>
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.QuizId)</th>
+            <th scope="col">Your Reuslt</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Total)</th>
+            @* <th scope="col">Handle</th> *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Select((value, index) => new { Value = value , Index = index + 1}))
+        {
+            <tr>
+                <th scope="row">@item.Index </th>
+                <td>Quiz @Html.DisplayFor(modelItem => item.Value.QuizId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Value.Total)</td>
+                <td>@Html.DisplayFor(modelItem => item.Value.TotalQuestions)</td>
+            </tr>
+        }
+    </tbody>
+</table>

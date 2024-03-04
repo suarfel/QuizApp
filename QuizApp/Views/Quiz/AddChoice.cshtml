@@ -1,0 +1,47 @@
+@model QuizApp.Models.ViewModels.QuestionViewModel
+
+@{
+    ViewBag.Title = "AddChoice";
+}
+
+<div class=" d-flex flex-column mt-5 gap-5 flex-wrap">
+    <div class="card" style="width: 25rem;height: 10rem">
+        <div class="card-body d-flex  flex-column ">
+            <p class="card-text"> @Html.DisplayFor(modelItem => Model.Question.Text)</p>
+            @foreach (var m in Model.Choices)
+            {
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                        value="@m.Id">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        @Html.DisplayFor(modelItem => m.Text)
+                    </label>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<h5 class="mt-5">Add Choice</h5>
+<div class="">
+    <div class="col-md-4">
+        <form asp-action="AddChoice" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Choice.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Choice.QuestionId" value="@Model.Question.Id" />
+            <div class="form-group">
+                <label asp-for="Choice.Text" class="control-label"></label>
+                <input asp-for="Choice.Text" class="form-control" />
+                <span asp-validation-for="Choice.Text" class="text-danger"></span>
+            </div>
+            <!-- Corrected closing div tag -->
+            <div class="form-group mt-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

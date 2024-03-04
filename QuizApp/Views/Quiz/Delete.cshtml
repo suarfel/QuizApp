@@ -1,0 +1,19 @@
+@model QuizApp.Models.Domain.Quiz
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div style="margin-left: 5rem;">
+    <h4>Delete Quiz</h4>
+    <div>
+        <h6>Are you sure you want to delete quiz @Model.Title</h6>
+        <div class="form-group">
+
+            @using (Html.BeginForm("Delete", "Quiz", new { id = Model.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            }
+        </div>
+    </div>
+</div>
